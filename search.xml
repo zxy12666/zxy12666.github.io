@@ -1,30 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[Hexo Admin Deploy踩坑记录]]></title>
-    <url>%2F2019%2F03%2F01%2FHexo-Admin-Deploy%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%2F</url>
-    <content type="text"><![CDATA[参考hexo-admin/issues 背景由于Windows的某种原因，依据网站的大部分教程，均会抛出deploy Error: spawn UNKNOWN异常。而GitHub上issues给出了相关解决方案，现在总结一下具体的过程 填坑 打开站点配置文件(\xxxx.github.io\_config.yml)，在admin中加入deployCommand: &amp;#39;sh hexo-deploy.sh&amp;#39;。示例： 12345admin: username: 看不见 password_hash: 看不见 secret: 看不见 deployCommand: &apos;sh hexo-deploy.sh&apos; 在根目录中(\xxxx.github.io\)新建hexo-deploy.sh文件，内容为： 1hexo g -d 打开deploy.js(\xxxx.github.io\node_modules\hexo-admin\deploy.js)，将var proc = spawn(command, [message], {detached: true});更改为var proc = spawn((process.platform === &amp;quot;win32&amp;quot; ? &amp;quot;hexo.cmd&amp;quot; : &amp;quot;hexo&amp;quot;), [&amp;#39;d&amp;#39;, &amp;#39;-g&amp;#39;]);更改完后的代码： 1234567891011121314module.exports = function (command, message, done) &#123; done = once(done); var proc = spawn((process.platform === &quot;win32&quot; ? &quot;hexo.cmd&quot; : &quot;hexo&quot;), [&apos;d&apos;, &apos;-g&apos;]); var stdout = &apos;&apos;; var stderr = &apos;&apos;; proc.stdout.on(&apos;data&apos;, function(data)&#123;stdout += data.toString()&#125;) proc.stderr.on(&apos;data&apos;, function(data)&#123;stderr += data.toString()&#125;) proc.on(&apos;error&apos;, function(err) &#123; done(err, &#123;stdout: stdout, stderr: stderr&#125;); &#125;); proc.on(&apos;close&apos;, function () &#123; done(null, &#123;stdout: stdout, stderr: stderr&#125;); &#125;);&#125; 效果]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Hexo Admin Deploy踩坑记录</title>
+      <link href="/2019/03/01/Hexo-Admin-Deploy%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/"/>
+      <url>/2019/03/01/Hexo-Admin-Deploy%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/jaredly/hexo-admin/issues/94" target="_blank" rel="noopener">hexo-admin/issues</a></p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>由于Windows的某种原因，依据网站的大部分教程，均会抛出<code>deploy Error: spawn UNKNOWN</code>异常。而GitHub上issues给出了相关解决方案，现在总结一下具体的过程</p><h2 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h2><ul><li><p>打开站点配置文件(<code>\xxxx.github.io\_config.yml</code>)，在<code>admin</code>中加入<code>deployCommand: &amp;#39;sh hexo-deploy.sh&amp;#39;</code>。示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">admin:</span><br><span class="line">  username: 看不见</span><br><span class="line">  password_hash: 看不见</span><br><span class="line">  secret: 看不见</span><br><span class="line">  deployCommand: &apos;sh hexo-deploy.sh&apos;</span><br></pre></td></tr></table></figure></li><li><p>在根目录中(<code>\xxxx.github.io\</code>)新建<code>hexo-deploy.sh</code>文件，内容为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></li><li><p>打开deploy.js(<code>\xxxx.github.io\node_modules\hexo-admin\deploy.js</code>)，将<code>var proc = spawn(command, [message], {detached: true});</code>更改为<code>var proc = spawn((process.platform === &amp;quot;win32&amp;quot; ? &amp;quot;hexo.cmd&amp;quot; : &amp;quot;hexo&amp;quot;), [&amp;#39;d&amp;#39;, &amp;#39;-g&amp;#39;]);</code><br>更改完后的代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">module.exports = function (command, message, done) &#123;</span><br><span class="line">  done = once(done);</span><br><span class="line">  var proc = spawn((process.platform === &quot;win32&quot; ? &quot;hexo.cmd&quot; : &quot;hexo&quot;), [&apos;d&apos;, &apos;-g&apos;]);</span><br><span class="line">  var stdout = &apos;&apos;;</span><br><span class="line">  var stderr = &apos;&apos;;</span><br><span class="line">  proc.stdout.on(&apos;data&apos;, function(data)&#123;stdout += data.toString()&#125;)</span><br><span class="line">  proc.stderr.on(&apos;data&apos;, function(data)&#123;stderr += data.toString()&#125;)</span><br><span class="line">  proc.on(&apos;error&apos;, function(err) &#123;</span><br><span class="line">    done(err, &#123;stdout: stdout, stderr: stderr&#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">  proc.on(&apos;close&apos;, function () &#123;</span><br><span class="line">    done(null, &#123;stdout: stdout, stderr: stderr&#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="http://hlx-blog.oss-cn-beijing.aliyuncs.com/18-5-1/52473923.jpg" alt="效果图"></p>]]></content>
+      
+      
       <categories>
-        <category>hexo</category>
+          
+          <category> hexo </category>
+          
       </categories>
-      <tags>
-        <tag>hexo admin</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[git 常用命令(含删除文件)]]></title>
-    <url>%2F2019%2F03%2F01%2F%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[0.可以通过git branch -r 命令查看远端库的分支情况 &nbsp; 1,从已有的分支创建新的分支(如从master分支),创建一个dev分支 git checkout -b dev 2,创建完可以查看一下,分支已经切换到dev git branch &nbsp;&nbsp;&nbsp;&nbsp;* dev &nbsp;&nbsp;&nbsp;&nbsp;master 3.建立本地到上游（远端）仓的链接 –这样代码才能提交上去 git branch –set-upstream-to=origin/dev&nbsp; 取消对master的跟踪 git branch –unset-upstream master &nbsp; git 创建分支提交远程分支 - oppotvrhttps://my.oschina.net/u/219482/blog/285584 &nbsp; 以下两个应该是同一个意思，=upstream : 上游码流的意思git branch –set-upstream-to=mastergit branch –set-upstream-to=original/master git help branchgit branch [–set-upstream | –track | –no-track] [-l] [-f] &lt;branchname&gt; [&lt;start-point&gt;]git branch (–set-upstream-to=&lt;upstream&gt; | -u &lt;upstream&gt;) [&lt;branchname&gt;]git branch –unset-upstream [&lt;branchname&gt;] git branch –set-upstream-to=original/master newgit branch –set-upstream debug origin/debug //其中debug为创建的分支 &nbsp; 提交该分支到远程仓库git push origin dev git push origin与git push -u origin master的区别&nbsp; $ git push origin 上面命令表示，将当前分支推送到origin主机的对应分支。&nbsp; 如果当前分支只有一个追踪分支，那么主机名都可以省略。&nbsp; $ git push 如果当前分支与多个主机存在追踪关系，那么这个时候-u选项会指定一个默认主机，这样后面就可以不加任何参数使用git push。 $ git push -u origin master 上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。 本地分支代码提交到远端库git push origin mastergit push origin HEAD:refs/for/远端分支名 git push origin 本地分支名:refs/for/远端分支名 eg:git push origin test:refs/for/master #本地test分支代码提交到远端master库 在远端服务器新建分支： 方法1： git checkout -b dev #建立本地到上游（远端）仓的链接 –这样代码才能提交上去git branch –set-upstream-to=origin/devgit branch –set-upstream debug origin/debug //其中debug为创建的分支git push origin dev #取消对master的跟踪git branch –unset-upstream master &nbsp; 方法2： git branch -b stage2git push origin 本地分支名:远端分支名xx&nbsp; // 在服務器新建新分支名xxx &nbsp; 对比： git branch -b stag2git push origin stage2:refs/for/stage2 // 代码入庫命令，不会新建新分支在远端]]></content>
+      
+      
+        <tags>
+            
+            <tag> hexo admin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git 常用命令(含删除文件)</title>
+      <link href="/2019/03/01/%E6%B5%8B%E8%AF%95/"/>
+      <url>/2019/03/01/%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<p>0.可以通过git branch -r 命令查看远端库的分支情况</p><p>&nbsp;<img src="http://bmob-cdn-23872.b0.upaiyun.com/2019/03/01/23dbdac54057592f80677bdcb7e2dbf0.png" alt></p><p>1,从已有的分支创建新的分支(如从master分支),创建一个dev分支</p><p>git checkout -b dev</p><p>2,创建完可以查看一下,分支已经切换到dev</p><p>git branch</p><p>&nbsp;&nbsp;&nbsp;&nbsp;* dev</p><p>&nbsp;&nbsp;&nbsp;&nbsp;master</p><p>3.建立本地到上游（远端）仓的链接 –这样代码才能提交上去</p><p><strong>git branch –set-upstream-to=origin/dev&nbsp;</strong></p><p><strong>取消对master的跟踪</strong></p><p><strong>git branch –unset-upstream master</strong></p><p>&nbsp;</p><p>git 创建分支提交远程分支 - oppotvr<br><a href="https://my.oschina.net/u/219482/blog/285584" target="_blank" rel="noopener">https://my.oschina.net/u/219482/blog/285584</a></p><p>&nbsp;</p><p>以下两个应该是同一个意思，=upstream : 上游码流的意思<br><strong>git branch –set-upstream-to=master</strong><br>git branch –set-upstream-to=original/master</p><p>git help branch<br>git branch [–set-upstream | –track | –no-track] [-l] [-f] &lt;branchname&gt; [&lt;start-point&gt;]<br>git branch (–set-upstream-to=&lt;upstream&gt; | -u &lt;upstream&gt;) [&lt;branchname&gt;]<br>git branch –unset-upstream [&lt;branchname&gt;]</p><p>git branch –set-upstream-to=original/master new<br><strong>git branch –set-upstream debug origin/debug    //其中debug为创建的分支</strong></p><p>&nbsp;</p><p>提交该分支到远程仓库<br>git push origin dev</p><hr><h1 id="git-push-origin与git-push-u-origin-master的区别"><a href="#git-push-origin与git-push-u-origin-master的区别" class="headerlink" title="git push origin与git push -u origin master的区别"></a><a href="https://www.cnblogs.com/zhouj850/p/7260558.html" target="_blank" rel="noopener">git push origin与git push -u origin master的区别</a></h1><p><div class="clear">&nbsp;</div></p><p><div class="postBody"></div></p><div id="cnblogs_post_body" class="blogpost-body"><p><span lang="EN-US">$ git push origin</span></p><p>上面命令表示，将当前分支推送到<span lang="EN-US">origin主机的对应分支。<span lang="EN-US">&nbsp;</span></span></p><p>如果当前分支只有一个追踪分支，那么主机名都可以省略。<span lang="EN-US">&nbsp;</span></p><p><span lang="EN-US">$ git push 如果当前分支与多个主机存在追踪关系，那么这个时候<span lang="EN-US">-u选项会指定一个默认主机，这样后面就可以不加任何参数使用<span lang="EN-US">git push。</span></span></span></p><p><span lang="EN-US">$ git push -u origin master 上面命令将本地的<span lang="EN-US">master分支推送到<span lang="EN-US">origin主机，同时指定<span lang="EN-US">origin为默认主机，后面就可以不加任何参数使用<span lang="EN-US">git push了。</span></span></span></span></span></p><hr><h1 id="本地分支代码提交到远端库"><a href="#本地分支代码提交到远端库" class="headerlink" title="本地分支代码提交到远端库"></a>本地分支代码提交到远端库</h1><p>git push origin master<br>git push origin HEAD:refs/for/远端分支名</p><p>git push origin 本地分支名:refs/for/远端分支名</p><p>eg:<br>git push origin test:refs/for/master  #本地test分支代码提交到远端master库</p><hr><p><strong>在远端服务器新建分支：</strong></p><p><strong>方法1：</strong></p><p>git checkout -b dev</p><p>#建立本地到上游（远端）仓的链接 –这样代码才能提交上去<br>git branch –set-upstream-to=origin/dev<br>git branch –set-upstream debug origin/debug //其中debug为创建的分支<br>git push origin dev</p><p>#取消对master的跟踪<br>git branch –unset-upstream master</p><p>&nbsp;</p><p><strong>方法2：</strong></p><p>git branch -b stage2<br>git push origin 本地分支名:远端分支名xx&nbsp; // 在服務器新建新分支名xxx</p><p>&nbsp;</p><p>对比：</p><p>git branch -b stag2<br>git push origin stage2:refs/for/stage2   // 代码入庫命令，不会新建新分支在远端</p></div>]]></content>
+      
+      
       <categories>
-        <category>git</category>
+          
+          <category> git </category>
+          
       </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[欢迎！]]></title>
-    <url>%2F2019%2F02%2F22%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[欢迎来到我的博客，我是程序员张翔宇我来自江苏镇江，请多多指教！]]></content>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>欢迎！</title>
+      <link href="/2019/02/22/hello-world/"/>
+      <url>/2019/02/22/hello-world/</url>
+      
+        <content type="html"><![CDATA[<h2 id="欢迎来到我的博客，我是程序员张翔宇"><a href="#欢迎来到我的博客，我是程序员张翔宇" class="headerlink" title="欢迎来到我的博客，我是程序员张翔宇"></a>欢迎来到我的博客，我是程序员张翔宇</h2><p><img src="http://bmob-cdn-23872.b0.upaiyun.com/2019/02/22/2b7b08d940e92d56803a42a1dae38bc1.jpg" alt>我来自江苏镇江，请多多指教！</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>
