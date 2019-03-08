@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[flutter踩坑记录之IOS输入框长按报错]]></title>
+    <url>%2F2019%2F03%2F08%2Fflutter%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E4%B9%8BIOS%E8%BE%93%E5%85%A5%E6%A1%86%E9%95%BF%E6%8C%89%E6%8A%A5%E9%94%99%2F</url>
+    <content type="text"><![CDATA[开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法:1.首先在pubspec.yaml的dependencies下加入这个flutter_localizations: sdk: flutter如图：12.然后在MaterialApp设置一下localizationsDelegates如图:3.写一个类继承一下CupertinoLocalizations，在项目中 我这个类名叫ChineseCupertinoLocalizations(没错，就是localizationsDelegates中的第三个)，如图：3-6ChineseCupertinoLocalizations的配置上次提到报错的原因就是因为cutButtonLabel，copyButtonLabel，pasteButtonLabel，selectAllButtonLabel 这几个按钮没有实现，所以继承CupertinoLocalizations一定要为这几个按钮赋值，这里是那种语言，那么，赋值就对应那种语言，同时要注意locale.languageCode也要填写，如果你是中文，那么locale.languageCode ==’zh’;4.在ios工程中，在项目的info设置语言环境添加 Localization native development region—&gt;china添加一个Localizations 为array类型的，并且设置值为 Chinese (simplified)7.ios 语言环境设置效果图：（注意：请把手机环境调试成中文的语言环境）Android 8.Android示例图ios 效果图]]></content>
+      <categories>
+        <category>flutter</category>
+      </categories>
+      <tags>
+        <tag>flutter</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hexo Admin Deploy踩坑记录]]></title>
     <url>%2F2019%2F03%2F01%2FHexo-Admin-Deploy%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[参考hexo-admin/issues 背景由于Windows的某种原因，依据网站的大部分教程，均会抛出deploy Error: spawn UNKNOWN异常。而GitHub上issues给出了相关解决方案，现在总结一下具体的过程 填坑 打开站点配置文件(\xxxx.github.io\_config.yml)，在admin中加入deployCommand: &amp;#39;sh hexo-deploy.sh&amp;#39;。示例： 12345admin: username: 看不见 password_hash: 看不见 secret: 看不见 deployCommand: &apos;sh hexo-deploy.sh&apos; 在根目录中(\xxxx.github.io\)新建hexo-deploy.sh文件，内容为： 1hexo g -d 打开deploy.js(\xxxx.github.io\node_modules\hexo-admin\deploy.js)，将var proc = spawn(command, [message], {detached: true});更改为var proc = spawn((process.platform === &amp;quot;win32&amp;quot; ? &amp;quot;hexo.cmd&amp;quot; : &amp;quot;hexo&amp;quot;), [&amp;#39;d&amp;#39;, &amp;#39;-g&amp;#39;]);更改完后的代码： 1234567891011121314module.exports = function (command, message, done) &#123; done = once(done); var proc = spawn((process.platform === &quot;win32&quot; ? &quot;hexo.cmd&quot; : &quot;hexo&quot;), [&apos;d&apos;, &apos;-g&apos;]); var stdout = &apos;&apos;; var stderr = &apos;&apos;; proc.stdout.on(&apos;data&apos;, function(data)&#123;stdout += data.toString()&#125;) proc.stderr.on(&apos;data&apos;, function(data)&#123;stderr += data.toString()&#125;) proc.on(&apos;error&apos;, function(err) &#123; done(err, &#123;stdout: stdout, stderr: stderr&#125;); &#125;); proc.on(&apos;close&apos;, function () &#123; done(null, &#123;stdout: stdout, stderr: stderr&#125;); &#125;);&#125; 效果]]></content>
