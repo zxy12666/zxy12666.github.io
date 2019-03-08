@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="flutter,">
 
 
 
@@ -86,13 +86,28 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="张翔宇博客">
-<meta property="og:url" content="http://yoursite.com/categories/git/index.html">
+<meta name="description" content="开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法:1.首先在pubspec.yaml的dependencies下加入这个">
+<meta name="keywords" content="flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter踩坑记录之IOS输入框长按报错">
+<meta property="og:url" content="http://yoursite.com/2019/03/08/flutter踩坑记录之IOS输入框长按报错/index.html">
 <meta property="og:site_name" content="张翔宇博客">
+<meta property="og:description" content="开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法:1.首先在pubspec.yaml的dependencies下加入这个">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hib5bxj30fq04oaa0.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hiin2lj30rs0uywft.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidodej30rs0qbmy8.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpgly1g0v92z3vtvj30rs0ps0tb.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidhsrj30rs0hhjs5.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidhsrj30rs0hhjs5.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hihgatj30rs0lfjs9.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hicjlhj30la13m0t8.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpggy1g0vcyv7cdqj30ou1ca74p.jpg">
+<meta property="og:updated_time" content="2019-03-08T06:16:06.059Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="张翔宇博客">
+<meta name="twitter:title" content="flutter踩坑记录之IOS输入框长按报错">
+<meta name="twitter:description" content="开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法:1.首先在pubspec.yaml的dependencies下加入这个">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hib5bxj30fq04oaa0.jpg">
 
 
 
@@ -122,14 +137,14 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/git/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/08/flutter踩坑记录之IOS输入框长按报错/">
 
 
 
 
 
 
-  <title>分类: git | 张翔宇博客</title>
+  <title>flutter踩坑记录之IOS输入框长按报错 | 张翔宇博客</title>
   
 
 
@@ -148,7 +163,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -284,53 +299,178 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>git<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/flutter踩坑记录之IOS输入框长按报错/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张翔宇">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://bmob-cdn-23872.b0.upaiyun.com/2019/02/22/2b7b08d940e92d56803a42a1dae38bc1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张翔宇博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/01/测试/" itemprop="url">
-              
-                <span itemprop="name">git 常用命令(含删除文件)</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">flutter踩坑记录之IOS输入框长按报错</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-01T11:20:00+08:00" content="2019-03-01">
-          03-01
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T11:25:00+08:00">
+                2019-03-08
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">flutter</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/08/flutter踩坑记录之IOS输入框长按报错/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/08/flutter踩坑记录之IOS输入框长按报错/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
+      
 
+      
+        <div data-note-content class="show-content"><br>          <div class="show-content-free"><br>            <p>开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法:</p><p>1.首先在pubspec.yaml的dependencies下加入这个</p><p>flutter_localizations:</p><p>  sdk: flutter</p><p>如图：</p><div class="image-package"><br><div class="image-container" style="max-width: 566px; max-height: 168px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hib5bxj30fq04oaa0.jpg"><br><div class="image-caption">1</div><br></div><p>2.然后在MaterialApp设置一下localizationsDelegates如图:</p><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 780px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hiin2lj30rs0uywft.jpg"><br><br><div class="image-caption"><br></div><p>3.写一个类继承一下CupertinoLocalizations，在项目中 我这个类名叫ChineseCupertinoLocalizations(没错，就是localizationsDelegates中的第三个)，如图：</p><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 662px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidodej30rs0qbmy8.jpg"><br></div><br><div class="image-caption"></div><br></div><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 649px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v92z3vtvj30rs0ps0tb.jpg"><br></div><br><div class="image-caption"></div><br></div><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 707px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidhsrj30rs0hhjs5.jpg"><br></div><br><div class="image-caption"></div><br></div><div class="image-package"><br></div><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 707px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidhsrj30rs0hhjs5.jpg"><br></div><br><div class="image-caption">3-6ChineseCupertinoLocalizations的配置</div><br></div><p>上次提到报错的原因就是因为cutButtonLabel，copyButtonLabel，pasteButtonLabel，selectAllButtonLabel 这几个按钮没有实现，所以继承CupertinoLocalizations一定要为这几个按钮赋值，这里是那种语言，那么，赋值就对应那种语言，同时要注意locale.languageCode也要填写，如果你是中文，那么locale.languageCode ==’zh’;</p><p>4.在ios工程中，在项目的info设置语言环境</p><p>添加 Localization native development region—&gt;china</p><p>添加一个Localizations 为array类型的，并且设置值为 Chinese (simplified)</p><p><br></p><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 539px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hihgatj30rs0lfjs9.jpg"><br></div><br><div class="image-caption">7.ios 语言环境设置</div><br></div><p>效果图：（<b>注意：请把手机环境调试成中文的语言环境</b>）</p><p>Android </p><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 1303px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hicjlhj30la13m0t8.jpg"><br></div><br><div class="image-caption">8.Android示例图</div><br></div><p>ios 效果图</p><p><br></p><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 1360px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0vcyv7cdqj30ou1ca74p.jpg"><br></div></div></div></div></div></div></div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/flutter/" rel="tag"># flutter</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/01/Hexo-Admin-Deploy踩坑记录/" rel="next" title="Hexo Admin Deploy踩坑记录">
+                <i class="fa fa-chevron-left"></i> Hexo Admin Deploy踩坑记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -338,6 +478,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2019/03/08/flutter踩坑记录之IOS输入框长按报错/" data-title="flutter踩坑记录之IOS输入框长按报错" data-url="http://yoursite.com/2019/03/08/flutter踩坑记录之IOS输入框长按报错/">
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -571,6 +721,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
