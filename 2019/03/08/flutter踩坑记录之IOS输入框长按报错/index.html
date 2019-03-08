@@ -86,13 +86,13 @@
 
 
 
-<meta name="description" content="开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法:1.首先在pubspec.yaml的dependencies下加入这个">
+<meta name="description" content="开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法: 1.首先在pubspec.yaml的dependencies下加入这个 flutter_localiz">
 <meta name="keywords" content="flutter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flutter踩坑记录之IOS输入框长按报错">
 <meta property="og:url" content="http://yoursite.com/2019/03/08/flutter踩坑记录之IOS输入框长按报错/index.html">
 <meta property="og:site_name" content="张翔宇博客">
-<meta property="og:description" content="开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法:1.首先在pubspec.yaml的dependencies下加入这个">
+<meta property="og:description" content="开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法: 1.首先在pubspec.yaml的dependencies下加入这个 flutter_localiz">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hib5bxj30fq04oaa0.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hiin2lj30rs0uywft.jpg">
@@ -103,10 +103,10 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hihgatj30rs0lfjs9.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hicjlhj30la13m0t8.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/005BYqpggy1g0vcyv7cdqj30ou1ca74p.jpg">
-<meta property="og:updated_time" content="2019-03-08T06:18:32.335Z">
+<meta property="og:updated_time" content="2019-03-08T06:39:02.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flutter踩坑记录之IOS输入框长按报错">
-<meta name="twitter:description" content="开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法:1.首先在pubspec.yaml的dependencies下加入这个">
+<meta name="twitter:description" content="开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法: 1.首先在pubspec.yaml的dependencies下加入这个 flutter_localiz">
 <meta name="twitter:image" content="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hib5bxj30fq04oaa0.jpg">
 
 
@@ -412,7 +412,26 @@
       
 
       
-        <div data-note-content class="show-content"><br>          <div class="show-content-free"><br>            <p>开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法:</p><p>1.首先在pubspec.yaml的dependencies下加入这个</p><p>flutter_localizations:</p><p>  sdk: flutter</p><p>如图：</p><div class="image-package"><br><div class="image-container" style="max-width: 566px; max-height: 168px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hib5bxj30fq04oaa0.jpg"><br><div class="image-caption">1</div><br></div><p>2.然后在MaterialApp设置一下localizationsDelegates如图:</p><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 780px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hiin2lj30rs0uywft.jpg"><br><br><div class="image-caption"><br></div><p>3.写一个类继承一下CupertinoLocalizations，在项目中 我这个类名叫ChineseCupertinoLocalizations(没错，就是localizationsDelegates中的第三个)，如图：</p><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 662px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidodej30rs0qbmy8.jpg"><br></div><br><div class="image-caption"></div><br></div><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 649px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v92z3vtvj30rs0ps0tb.jpg"><br></div><br><div class="image-caption"></div><br></div><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 707px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidhsrj30rs0hhjs5.jpg"><br></div><br><div class="image-caption"></div><br></div><div class="image-package"><br></div><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 707px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidhsrj30rs0hhjs5.jpg"><br></div><br><div class="image-caption">3-6ChineseCupertinoLocalizations的配置</div><br></div><p>上次提到报错的原因就是因为cutButtonLabel，copyButtonLabel，pasteButtonLabel，selectAllButtonLabel 这几个按钮没有实现，所以继承CupertinoLocalizations一定要为这几个按钮赋值，这里是那种语言，那么，赋值就对应那种语言，同时要注意locale.languageCode也要填写，如果你是中文，那么locale.languageCode ==’zh’;</p><p>4.在ios工程中，在项目的info设置语言环境</p><p>添加 Localization native development region—&gt;china</p><p>添加一个Localizations 为array类型的，并且设置值为 Chinese (simplified)</p><p><br></p><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 539px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hihgatj30rs0lfjs9.jpg"><br></div><br><div class="image-caption">7.ios 语言环境设置</div><br></div><p>效果图：（<b>注意：请把手机环境调试成中文的语言环境</b>）</p><p>Android </p><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 1303px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hicjlhj30la13m0t8.jpg"><br></div><br><div class="image-caption">8.Android示例图</div><br></div><p>ios 效果图</p><p><br></p><div class="image-package"><br><div class="image-container" style="max-width: 700px; max-height: 1360px;"><br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0vcyv7cdqj30ou1ca74p.jpg"><br></div></div></div></div></div></div></div>
+        <p><div data-note-content class="show-content"><br>    <div class="show-content-free"></div></div></p>
+<p>开发过程中发现在国际化过程中ios输入框长按会报错 flutter: Another exception was thrown: NoSuchMethodError: The getter ‘pasteButtonLabel’ was called on null. 本篇说明解决方法:</p>
+<p>1.首先在pubspec.yaml的dependencies下加入这个</p>
+<p>flutter_localizations:</p>
+<p> sdk: flutter</p>
+<p>如图：</p>
+<p><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hib5bxj30fq04oaa0.jpg" alt></p>
+<p>2.然后在MaterialApp设置一下localizationsDelegates如图:</p>
+<p> <img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hiin2lj30rs0uywft.jpg" alt></p>
+<p>3.写一个类继承一下CupertinoLocalizations，在项目中<br>            我这个类名叫ChineseCupertinoLocalizations(没错，就是localizationsDelegates中的第三个)，如图：<br> <img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidodej30rs0qbmy8.jpg" alt><br> <img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v92z3vtvj30rs0ps0tb.jpg" alt><br> <img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidhsrj30rs0hhjs5.jpg" alt><br> <img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hidhsrj30rs0hhjs5.jpg" alt><br>上次提到报错的原因就是因为cutButtonLabel，copyButtonLabel，pasteButtonLabel，selectAllButtonLabel<br>            这几个按钮没有实现，所以继承CupertinoLocalizations一定要为这几个按钮赋值，这里是那种语言，那么，赋值就对应那种语言，同时要注意locale.languageCode也要填写，如果你是中文，那么locale.languageCode<br>            ==’zh’;</p>
+<p>4.在ios工程中，在项目的info设置语言环境</p>
+<p>添加 Localization native development region—&gt;china</p>
+<p>添加一个Localizations 为array类型的，并且设置值为 Chinese (simplified)</p>
+<p><img src="https://ws3.sinaimg.cn/large/005BYqpgly1g0v8hihgatj30rs0lfjs9.jpg" alt></p>
+<p>效果图：（<strong>注意：请把手机环境调试成中文的语言环境</strong>）</p>
+<p>Android<br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0v8hicjlhj30la13m0t8.jpg" alt></p>
+<p>ios 效果图<br><img src="https://ws3.sinaimg.cn/large/005BYqpggy1g0vcyv7cdqj30ou1ca74p.jpg" alt></p>
+<p>github地址</p>
+<p><a href="https://github.com/hxxsocket/flutter_lg_demo" target="_blank" rel="noopener">https://github.com/hxxsocket/flutter_lg_demo</a></p>
+
       
     </div>
     
