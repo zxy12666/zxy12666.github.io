@@ -86,25 +86,21 @@
 
 
 
-<meta name="description" content="一、效果图二、封装两个组件，分别为DynamicTable.vue和TableColumn.vue，TableColumn.vue主要是使用递归来对表头进行循环生成DynamicTable.vue; “复制代码”) 1 &amp;lt;template&amp;gt; 2   &amp;lt;el-table :data=”tableData” border :height=”height”&amp;gt; 3     &amp;lt;">
+<meta name="description" content="一、效果图二、封装两个组件，分别为DynamicTable.vue和TableColumn.vue，TableColumn.vue主要是使用递归来对表头进行循环生成DynamicTable.vue 1 &amp;lt;template&amp;gt; 2   &amp;lt;el-table :data=”tableData” border :height=”height”&amp;gt; 3     &amp;lt;template">
 <meta name="keywords" content="vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="element UI实现动态生成多级表头">
 <meta property="og:url" content="http://yoursite.com/2019/05/05/element-UI实现动态生成多级表头/index.html">
 <meta property="og:site_name" content="张翔宇博客">
-<meta property="og:description" content="一、效果图二、封装两个组件，分别为DynamicTable.vue和TableColumn.vue，TableColumn.vue主要是使用递归来对表头进行循环生成DynamicTable.vue; “复制代码”) 1 &amp;lt;template&amp;gt; 2   &amp;lt;el-table :data=”tableData” border :height=”height”&amp;gt; 3     &amp;lt;">
+<meta property="og:description" content="一、效果图二、封装两个组件，分别为DynamicTable.vue和TableColumn.vue，TableColumn.vue主要是使用递归来对表头进行循环生成DynamicTable.vue 1 &amp;lt;template&amp;gt; 2   &amp;lt;el-table :data=”tableData” border :height=”height”&amp;gt; 3     &amp;lt;template">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://images2018.cnblogs.com/blog/1429393/201808/1429393-20180816195340083-491882635.png">
 <meta property="og:image" content="http://images2018.cnblogs.com/blog/1429393/201808/1429393-20180816195421784-1185412164.png">
 <meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
-<meta property="og:updated_time" content="2019-05-05T01:53:31.742Z">
+<meta property="og:updated_time" content="2019-05-05T01:57:54.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="element UI实现动态生成多级表头">
-<meta name="twitter:description" content="一、效果图二、封装两个组件，分别为DynamicTable.vue和TableColumn.vue，TableColumn.vue主要是使用递归来对表头进行循环生成DynamicTable.vue; “复制代码”) 1 &amp;lt;template&amp;gt; 2   &amp;lt;el-table :data=”tableData” border :height=”height”&amp;gt; 3     &amp;lt;">
+<meta name="twitter:description" content="一、效果图二、封装两个组件，分别为DynamicTable.vue和TableColumn.vue，TableColumn.vue主要是使用递归来对表头进行循环生成DynamicTable.vue 1 &amp;lt;template&amp;gt; 2   &amp;lt;el-table :data=”tableData” border :height=”height”&amp;gt; 3     &amp;lt;template">
 <meta name="twitter:image" content="http://images2018.cnblogs.com/blog/1429393/201808/1429393-20180816195340083-491882635.png">
 
 
@@ -410,17 +406,49 @@
       
 
       
-        <div class="post"><br><br><strong>一、效果图</strong><br><br><img src="http://images2018.cnblogs.com/blog/1429393/201808/1429393-20180816195340083-491882635.png" alt><br><br><img src="http://images2018.cnblogs.com/blog/1429393/201808/1429393-20180816195421784-1185412164.png" alt><br><br><strong>二、封装两个组件，分别为DynamicTable.vue和TableColumn.vue，TableColumn.vue主要是使用递归来对表头进行循环生成</strong><br><br>DynamicTable.vue<br><br><div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0" target="_blank" rel="noopener"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>; “复制代码”)</span></div><br><pre><span style="color: #008080;"> 1</span> &lt;template&gt;<br><span style="color: #008080;"> 2</span>   &lt;el-table :data=”tableData” border :height=”height”&gt;<br><span style="color: #008080;"> 3</span>     &lt;template v-<span style="color: #0000ff;">for</span>=”item in tableHeader”&gt;<br><span style="color: #008080;"> 4</span>       &lt;table-column v-<span style="color: #0000ff;">if</span>=”item.children &amp;&amp; item.children.length” :key=”item.id” :coloumn-header=”item”&gt;&lt;/table-column&gt;<br><span style="color: #008080;"> 5</span>       &lt;el-table-column v-<span style="color: #0000ff;">else</span> :key=”item.id” :label=”item.label” :prop=”item.prop” align=”center”&gt;&lt;/el-table-column&gt;<br><span style="color: #008080;"> 6</span>     &lt;/template&gt;<br><span style="color: #008080;"> 7</span>   &lt;/el-table&gt;<br><span style="color: #008080;"> 8</span> &lt;/template&gt;<br><span style="color: #008080;"> 9</span><br><span style="color: #008080;">10</span> &lt;script&gt;<br><span style="color: #008080;">11</span> import TableColumn from ‘./TableColumn’<br><span style="color: #008080;">12</span> export <span style="color: #0000ff;">default</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">  props: {<br></span><span style="color: #008080;">14</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 表格的数据</span><br><span style="color: #008080;">15</span> <span style="color: #000000;">    tableData: {<br></span><span style="color: #008080;">16</span> <span style="color: #000000;">      type: Array,<br></span><span style="color: #008080;">17</span>       required: <span style="color: #0000ff;">true</span><br><span style="color: #008080;">18</span> <span style="color: #000000;">    },<br></span><span style="color: #008080;">19</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 多级表头的数据</span><br><span style="color: #008080;">20</span> <span style="color: #000000;">    tableHeader: {<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">      type: Array,<br></span><span style="color: #008080;">22</span>       required: <span style="color: #0000ff;">true</span><br><span style="color: #008080;">23</span> <span style="color: #000000;">    },<br></span><span style="color: #008080;">24</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 表格的高度</span><br><span style="color: #008080;">25</span> <span style="color: #000000;">    height: {<br></span><span style="color: #008080;">26</span> <span style="color: #000000;">      type: String,<br></span><span style="color: #008080;">27</span>       <span style="color: #0000ff;">default</span>: ‘300’<br><span style="color: #008080;">28</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">29</span> <span style="color: #000000;">  },<br></span><span style="color: #008080;">30</span> <span style="color: #000000;">  components: {<br></span><span style="color: #008080;">31</span> <span style="color: #000000;">    TableColumn<br></span><span style="color: #008080;">32</span> <span style="color: #000000;">  }<br></span><span style="color: #008080;">33</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">34</span> &lt;/script&gt;<br><span style="color: #008080;">35</span><br><span style="color: #008080;">36</span> &lt;style scoped&gt;<br><span style="color: #008080;">37</span><br><span style="color: #008080;">38</span> &lt;/style&gt;</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0" target="_blank" rel="noopener"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>; “复制代码”)</span></div></div>
+        <div class="post"><br><br><strong>一、效果图</strong><br><br><img src="http://images2018.cnblogs.com/blog/1429393/201808/1429393-20180816195340083-491882635.png" alt><br><br><img src="http://images2018.cnblogs.com/blog/1429393/201808/1429393-20180816195421784-1185412164.png" alt><br><br><strong>二、封装两个组件，分别为DynamicTable.vue和TableColumn.vue，TableColumn.vue主要是使用递归来对表头进行循环生成</strong><br><br>DynamicTable.vue<br><br><br><pre><span style="color: #008080;"> 1</span> &lt;template&gt;<br><span style="color: #008080;"> 2</span>   &lt;el-table :data=”tableData” border :height=”height”&gt;<br><span style="color: #008080;"> 3</span>     &lt;template v-<span style="color: #0000ff;">for</span>=”item in tableHeader”&gt;<br><span style="color: #008080;"> 4</span>       &lt;table-column v-<span style="color: #0000ff;">if</span>=”item.children &amp;&amp; item.children.length” :key=”item.id” :coloumn-header=”item”&gt;&lt;/table-column&gt;<br><span style="color: #008080;"> 5</span>       &lt;el-table-column v-<span style="color: #0000ff;">else</span> :key=”item.id” :label=”item.label” :prop=”item.prop” align=”center”&gt;&lt;/el-table-column&gt;<br><span style="color: #008080;"> 6</span>     &lt;/template&gt;<br><span style="color: #008080;"> 7</span>   &lt;/el-table&gt;<br><span style="color: #008080;"> 8</span> &lt;/template&gt;<br><span style="color: #008080;"> 9</span><br><span style="color: #008080;">10</span> &lt;script&gt;<br><span style="color: #008080;">11</span> import TableColumn from ‘./TableColumn’<br><span style="color: #008080;">12</span> export <span style="color: #0000ff;">default</span><span style="color: #000000;"> {<br></span><span style="color: #008080;">13</span> <span style="color: #000000;">  props: {<br></span><span style="color: #008080;">14</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 表格的数据</span><br><span style="color: #008080;">15</span> <span style="color: #000000;">    tableData: {<br></span><span style="color: #008080;">16</span> <span style="color: #000000;">      type: Array,<br></span><span style="color: #008080;">17</span>       required: <span style="color: #0000ff;">true</span><br><span style="color: #008080;">18</span> <span style="color: #000000;">    },<br></span><span style="color: #008080;">19</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 多级表头的数据</span><br><span style="color: #008080;">20</span> <span style="color: #000000;">    tableHeader: {<br></span><span style="color: #008080;">21</span> <span style="color: #000000;">      type: Array,<br></span><span style="color: #008080;">22</span>       required: <span style="color: #0000ff;">true</span><br><span style="color: #008080;">23</span> <span style="color: #000000;">    },<br></span><span style="color: #008080;">24</span>     <span style="color: #008000;">//</span><span style="color: #008000;"> 表格的高度</span><br><span style="color: #008080;">25</span> <span style="color: #000000;">    height: {<br></span><span style="color: #008080;">26</span> <span style="color: #000000;">      type: String,<br></span><span style="color: #008080;">27</span>       <span style="color: #0000ff;">default</span>: ‘300’<br><span style="color: #008080;">28</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">29</span> <span style="color: #000000;">  },<br></span><span style="color: #008080;">30</span> <span style="color: #000000;">  components: {<br></span><span style="color: #008080;">31</span> <span style="color: #000000;">    TableColumn<br></span><span style="color: #008080;">32</span> <span style="color: #000000;">  }<br></span><span style="color: #008080;">33</span> <span style="color: #000000;">}<br></span><span style="color: #008080;">34</span> &lt;/script&gt;<br><span style="color: #008080;">35</span><br><span style="color: #008080;">36</span> &lt;style scoped&gt;<br><span style="color: #008080;">37</span><br><span style="color: #008080;">38</span> &lt;/style&gt;</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0" target="_blank" rel="noopener"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>; “复制代码”)</span></div></div>
 
 <p>TableColumn.vue</p>
-<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0" target="_blank" rel="noopener"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>; “复制代码”)</span></div><br><pre>&lt;template&gt;<br>  &lt;el-table-column :label=”coloumnHeader.label” :prop=”coloumnHeader.label” align=”center”&gt;<br>    &lt;template v-<span style="color: #0000ff;">for</span>=”item in coloumnHeader.children”&gt;<br>      &lt;tableColumn v-<span style="color: #0000ff;">if</span>=”item.children &amp;&amp; item.children.length” :key=”item.id” :coloumn-header=”item”&gt;&lt;/tableColumn&gt;<br>      &lt;el-table-column v-<span style="color: #0000ff;">else</span> :key=”item.name” :label=”item.label” :prop=”item.prop” align=”center”&gt;&lt;/el-table-column&gt;<br>    &lt;/template&gt;<br>  &lt;/el-table-column&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<span style="color: #000000;"><br>export </span><span style="color: #0000ff;">default</span><span style="color: #000000;"> {<br>  name: </span>‘tableColumn’<span style="color: #000000;">,<br>  props: {<br>    coloumnHeader: {<br>      type: Object,<br>      required: </span><span style="color: #0000ff;">true</span><span style="color: #000000;"><br>    }<br>  }<br>}<br></span>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br><br>&lt;/style&gt;</pre><br><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0" target="_blank" rel="noopener"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>; “复制代码”)</span></div></div>
+<pre>&lt;template&gt;
+  &lt;el-table-column :label="coloumnHeader.label" :prop="coloumnHeader.label" align="center"&gt;
+    &lt;template v-<span style="color: #0000ff;">for</span>="item in coloumnHeader.children"&gt;
+      &lt;tableColumn v-<span style="color: #0000ff;">if</span>="item.children &amp;&amp; item.children.length" :key="item.id" :coloumn-header="item"&gt;&lt;/tableColumn&gt;
+      &lt;el-table-column v-<span style="color: #0000ff;">else</span> :key="item.name" :label="item.label" :prop="item.prop" align="center"&gt;&lt;/el-table-column&gt;
+    &lt;/template&gt;
+  &lt;/el-table-column&gt;
+&lt;/template&gt;
 
-<p><strong>三、使用</strong></p>
-<p>HTML代码</p>
-<div class="cnblogs_code"><br><pre><span style="color: #008080;">1</span>     &lt;div class=”result-wrapper”&gt;<br><span style="color: #008080;">2</span>       &lt;dynamic-table :table-data=”tableData” :table-header=”tableConfig” v-<span style="color: #0000ff;">if</span>=”dynamicTableShow”&gt;&lt;/dynamic-table&gt;<br><span style="color: #008080;">3</span>       &lt;dynamic-form v-<span style="color: #0000ff;">else</span>&gt;&lt;/dynamic-form&gt;<br><span style="color: #008080;">4</span>     &lt;/div&gt;</pre><br></div>
+&lt;script&gt;<span style="color: #000000;">
+export </span><span style="color: #0000ff;">default</span><span style="color: #000000;"> {
+  name: </span>'tableColumn'<span style="color: #000000;">,
+  props: {
+    coloumnHeader: {
+      type: Object,
+      required: </span><span style="color: #0000ff;">true</span><span style="color: #000000;">
+    }
+  }
+}
+</span>&lt;/script&gt;
 
-<p>JS代码</p>
-<p><div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0" target="_blank" rel="noopener"><img src="//common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>; “复制代码”)</span></div></div></p>
+&lt;style scoped&gt;
+
+&lt;/style&gt;</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy">[![复制代码](//common.cnblogs.com/images/copycode.gif)](javascript:void(0); "复制代码")</span></div>
+
+**三、使用**
+
+HTML代码
+
+<div class="cnblogs_code">
+<pre><span style="color: #008080;">1</span>     &lt;div class="result-wrapper"&gt;
+<span style="color: #008080;">2</span>       &lt;dynamic-table :table-data="tableData" :table-header="tableConfig" v-<span style="color: #0000ff;">if</span>="dynamicTableShow"&gt;&lt;/dynamic-table&gt;
+<span style="color: #008080;">3</span>       &lt;dynamic-form v-<span style="color: #0000ff;">else</span>&gt;&lt;/dynamic-form&gt;
+<span style="color: #008080;">4</span>     &lt;/div&gt;</pre>
+</div>
+
+JS代码
+
+
 <pre><span style="color: #008080;">  1</span> &lt;script&gt;
 <span style="color: #008080;">  2</span> import DynamicTable from './components/DynamicTable'
 <span style="color: #008080;">  3</span> export <span style="color: #0000ff;">default</span><span style="color: #000000;"> {
@@ -680,7 +708,7 @@
 </span><span style="color: #008080;">257</span> .result-<span style="color: #000000;">wrapper{
 </span><span style="color: #008080;">258</span>   margin-<span style="color: #000000;">top: 22px;
 </span><span style="color: #008080;">259</span> <span style="color: #000000;">}
-</span><span style="color: #008080;">260</span> &lt;/style&gt;</pre></div>
+</span><span style="color: #008080;">260</span> &lt;/style&gt;</pre>
       
     </div>
     
