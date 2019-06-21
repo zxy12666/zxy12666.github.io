@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Websocket,">
 
 
 
@@ -86,13 +86,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="张翔宇博客">
-<meta property="og:url" content="http://yoursite.com/categories/hexo/index.html">
+<meta name="description" content="一、准备实现主要分为服务器端和客户端，客户端通过websocket与服务器端保持连接，这样服务器就可以向客户端主动发起请求。 二、服务器端服务器端我是使用的springboot，要是用websocket只需要引入websocket的依赖即可     org.springframework.boot    spring-boot-starter-websocket    2.0.4.RELEASE然">
+<meta name="keywords" content="Websocket">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" websocket实现服务器端消息推送">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/websocket实现服务器端消息推送/index.html">
 <meta property="og:site_name" content="张翔宇博客">
+<meta property="og:description" content="一、准备实现主要分为服务器端和客户端，客户端通过websocket与服务器端保持连接，这样服务器就可以向客户端主动发起请求。 二、服务器端服务器端我是使用的springboot，要是用websocket只需要引入websocket的依赖即可     org.springframework.boot    spring-boot-starter-websocket    2.0.4.RELEASE然">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-21T07:01:22.291Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="张翔宇博客">
+<meta name="twitter:title" content=" websocket实现服务器端消息推送">
+<meta name="twitter:description" content="一、准备实现主要分为服务器端和客户端，客户端通过websocket与服务器端保持连接，这样服务器就可以向客户端主动发起请求。 二、服务器端服务器端我是使用的springboot，要是用websocket只需要引入websocket的依赖即可     org.springframework.boot    spring-boot-starter-websocket    2.0.4.RELEASE然">
 
 
 
@@ -122,14 +127,14 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/hexo/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/21/websocket实现服务器端消息推送/">
 
 
 
 
 
 
-  <title>分类: hexo | 张翔宇博客</title>
+  <title> websocket实现服务器端消息推送 | 张翔宇博客</title>
   
 
 
@@ -148,7 +153,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -284,53 +289,242 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>hexo<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/21/websocket实现服务器端消息推送/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张翔宇">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://sunui-uniapp.oss-cn-beijing.aliyuncs.com/uniapp/15603254900059.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张翔宇博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/01/Hexo-Admin-Deploy踩坑记录/" itemprop="url">
-              
-                <span itemprop="name">Hexo Admin Deploy踩坑记录</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline"> websocket实现服务器端消息推送</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-01T16:22:00+08:00" content="2019-03-01">
-          03-01
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-21T15:00:00+08:00">
+                2019-06-21
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/21/websocket实现服务器端消息推送/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/06/21/websocket实现服务器端消息推送/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一、准备<br>实现主要分为服务器端和客户端，客户端通过websocket与服务器端保持连接，这样服务器就可以向客户端主动发起请求。</p>
+<p>二、服务器端<br>服务器端我是使用的springboot，要是用websocket只需要引入websocket的依赖即可</p>
+<p><dependency><br>    <groupid>org.springframework.boot</groupid><br>    <artifactid>spring-boot-starter-websocket</artifactid><br>    <version>2.0.4.RELEASE</version><br></dependency><br>然后主要需要实现两个类，一个是websocket的配置类，还有一个是提供其他服务调用的Service</p>
+<p>WebSocketConfig.java</p>
+<p>import org.springframework.context.annotation.Bean;<br>import org.springframework.context.annotation.Configuration;<br>import org.springframework.web.socket.server.standard.ServerEndpointExporter;</p>
+<p>/**</p>
+<ul>
+<li>@author chenwenrui</li>
+<li>@description: WebSocket配置类</li>
+<li>@date 2019/6/11 18:17<br> */<br> @Configuration<br> public class WebSocketConfig {<br> @Bean<br> public ServerEndpointExporter serverEndpointExporter() {<pre><code>return new ServerEndpointExporter();
+</code></pre> }<br> }<br> 这个配置文件只起到一个作用就是注册ServerEndpointExporter对象，这个bean会自动注册使用了@ServerEndpoint注解声明的类，比如下面的WebSocketService类</li>
+</ul>
+<p>WebSocketService.java</p>
+<p>import org.springframework.stereotype.Service;<br>import javax.websocket.*;<br>import javax.websocket.server.PathParam;<br>import javax.websocket.server.ServerEndpoint;<br>import java.io.IOException;<br>import java.util.List;<br>import java.util.concurrent.CopyOnWriteArraySet;<br>import java.util.stream.Collectors;</p>
+<p>/**</p>
+<ul>
+<li>@author chenwenrui</li>
+<li>@description: TODO</li>
+<li><p>@date 2019/6/11 18:11<br> */<br> @Service<br> @ServerEndpoint(value = “/websocket/{userId}”)<br> public class WebSocketService {</p>
+<p> /**</p>
+<ul>
+<li><p>concurrent包的线程安全Set，用来存放每个客户端对应的WebSocketSet对象。<br> */<br> private static CopyOnWriteArraySet<websocketservice> webSocketSet = new CopyOnWriteArraySet&lt;&gt;();</websocketservice></p>
+<p>/**</p>
+</li>
+<li><p>与某个客户端的连接会话，需要通过它来给客户端发送数据<br> */<br> private Session session;</p>
+<p>/**</p>
+</li>
+<li><p>客户端用户id<br> */<br> private String userId;</p>
+<p>/**</p>
+</li>
+<li><p>连接建立成功调用的方法<br> */<br> @OnOpen<br> public void onOpen(Session session, @PathParam(“userId”) String userId) {<br> this.session = session;<br> this.userId = userId;<br> if (userId != null) {</p>
+<pre><code>webSocketSet.add(this);     //加入set中
+</code></pre><p> }<br> }</p>
+<p>/**</p>
+</li>
+<li><p>连接关闭调用的方法<br> */<br> @OnClose<br> public void onClose() {<br> webSocketSet.remove(this);  //从set中删除<br> }</p>
+<p>/**</p>
+</li>
+<li>收到客户端消息后调用的方法<br> *</li>
+<li><p>@param message 客户端发送过来的消息<br> */<br> @OnMessage<br> public void onMessage(String message, Session session) {</p>
+<p>}</p>
+<p>/**</p>
+</li>
+<li>发生错误时调用<br> *</li>
+<li>@param session</li>
+<li><p>@param error<br> */<br> @OnError<br> public void onError(Session session, Throwable error) {<br> error.printStackTrace();<br> }</p>
+<p>/**</p>
+</li>
+<li>向客户端发送消息<br> *</li>
+<li>@param message 消息内容</li>
+<li>@param userIds 需要发送的客户端用户id列表<br> */<br> public void sendMessage(String message, List<string> userIds) {<br> // 需要发送消息的客户端<br> List<websocketservice> services = webSocketSet.stream()<pre><code>.filter(temp -&gt; userIds.contains(temp.userId))
+.collect(Collectors.toList());
+</code></pre> services.forEach(temp -&gt; {<pre><code>try {
+    temp.session.getBasicRemote().sendText(message);
+} catch (IOException e) {
+    e.printStackTrace();
+}
+</code></pre> });<br> }<br> }<br> @ServerEndpoint表示这是一个websocket，因为登录的每一个用户都是一个客户端，所以这里使用用户的id区分不同的客户端，以方便给对应的用户发送消息，每一个客户端发起websocket连接请求的时候，需要把对应对象(WebSocketService，主要是保存userId以及对应客户端的Session)保存到集合里(要供其他服务调用)，用户关闭连接的时候同时需要从集合中去除。</websocketservice></string></li>
+</ul>
+</li>
+</ul>
+<p>三、客户端<br>客户端我是使用的vue,只需要在mounted()钩子里面打开websocket的连接即可</p>
+<p>mounted(){<br>    let websocket = new WebSocket(<br>        “ws://localhost:8089/websocket/“ + userId<br>    );<br>     //连接成功建立的回调方法<br>    websocket.onopen = function(event) {<br>        console.log(“连接成功”);<br>    };<br>    //接收到消息的回调方法<br>    websocket.onmessage = function(event) {<br>        console.log(event);<br>    };<br>     //连接关闭的回调方法<br>    websocket.onclose = function() {<br>        console.log(“连接关闭”);<br>    };<br>    //连接发生错误的回调方法<br>    websocket.onerror = function() {<br>        console.log(“发生错误”);<br>    };<br>}</p>
+<h2 id="在实例化WebSocket对象的时候，添加了当前登录用户的用户id-token也行，只要是能确保当前状态下是唯一的-，用于标记每一个客户端对应的WebSocket连接。"><a href="#在实例化WebSocket对象的时候，添加了当前登录用户的用户id-token也行，只要是能确保当前状态下是唯一的-，用于标记每一个客户端对应的WebSocket连接。" class="headerlink" title="在实例化WebSocket对象的时候，添加了当前登录用户的用户id(token也行，只要是能确保当前状态下是唯一的)，用于标记每一个客户端对应的WebSocket连接。"></a>在实例化WebSocket对象的时候，添加了当前登录用户的用户id(token也行，只要是能确保当前状态下是唯一的)，用于标记每一个客户端对应的WebSocket连接。</h2><p>作者：大锅睿<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/cwr452829537/article/details/91580331" target="_blank" rel="noopener">https://blog.csdn.net/cwr452829537/article/details/91580331</a> </p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Websocket/" rel="tag"># Websocket</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/21/Springboot配置memcache/" rel="next" title="Springboot配置memcache">
+                <i class="fa fa-chevron-left"></i> Springboot配置memcache
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -338,6 +532,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2019/06/21/websocket实现服务器端消息推送/" data-title=" websocket实现服务器端消息推送" data-url="http://yoursite.com/2019/06/21/websocket实现服务器端消息推送/">
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -358,8 +562,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -431,6 +644,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在实例化WebSocket对象的时候，添加了当前登录用户的用户id-token也行，只要是能确保当前状态下是唯一的-，用于标记每一个客户端对应的WebSocket连接。"><span class="nav-number">1.</span> <span class="nav-text">在实例化WebSocket对象的时候，添加了当前登录用户的用户id(token也行，只要是能确保当前状态下是唯一的)，用于标记每一个客户端对应的WebSocket连接。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -558,6 +787,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
