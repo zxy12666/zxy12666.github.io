@@ -14,8 +14,8 @@ avatar: http://sunui-uniapp.oss-cn-beijing.aliyuncs.com/uniapp/15603254900059.pn
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
-root: /
+url: https://zxy12666.gitee.io/zxy12666.github.io
+root: /zxy12666.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
